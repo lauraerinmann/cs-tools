@@ -32,7 +32,7 @@ node4 192.168.33.4
 3. Initialize a vagrant node: 
 ```
 cd node1
-vagrant init chef/centos-6.5
+vagrant init puphpet/centos65-x64
 ```
 This process will take awhile the first time around.
 4. Update the `Vagrantfile` by adding the following lines
@@ -40,8 +40,12 @@ This process will take awhile the first time around.
   config.vm.hostname = "node1"
   config.vm.network "private_network", ip: "192.168.33.1"
 ```
-after the line `config.vm.box = "chef/centos-6.5"`
+after the line `config.vm.box = "puphpet/centos65-x64"`
 5. Spin up your **node1** instance: `vagrant up`
+   * You might have to run provision if you get the message
+```
+Machine already provisioned. Run `vagrant provision` or use the `--provision`
+```
 6. Login into your virtual os:
    * If your host os is OSX or Linux you can simply type: `vagrant ssh`
    * If your host os is Windows you'll need to run `putty.exe`
@@ -63,13 +67,13 @@ chmod 600 authorized_keys
 ```
 cd ..
 mkdir node2
-vagrant init chef/centos-6.5
+vagrant init puphpet/centos65-x64
 11. Update your `Vagrantfile` by adding the following lines
 ```
   config.vm.hostname = "node2"
   config.vm.network "private_network", ip: "192.168.33.2"
 ```
-after the line `config.vm.box = "chef/centos-6.5"`
+after the line `config.vm.box = "puphpet/centos65-x64"`
 12. Copy your keys file to the working directory: `cp ../node1/ssh-keys.tar.gz .`
 13. Spin up your **node2**: `vagrant up`
 14. Login into your virtual os
