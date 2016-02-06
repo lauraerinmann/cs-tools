@@ -18,18 +18,17 @@ node4 192.168.33.4
 
 ## Install Pre-Requisites
 
-1. Download from vagrantup.com the latest version of vagrant software for your operating system.
-
-2. Download from virtualbox.org the latest version of virtualbox software for your operating system.
+* Download from vagrantup.com the latest version of vagrant software for your operating system.
+* Download from virtualbox.org the latest version of virtualbox software for your operating system.
 
 ## Setup your compute nodes
 
-1. Create a project directory: `mini-cluster`
+* Create a project directory: `mini-cluster`
 
 ### Preparing node1
 
-2. Create a node directory: `mkdir node1`
-3. Initialize a vagrant node: 
+* Create a node directory: `mkdir node1`
+* Initialize a vagrant node: 
 ```
 cd node1
 vagrant init puphpet/centos65-x64
@@ -41,16 +40,16 @@ This process will take awhile the first time around.
   config.vm.network "private_network", ip: "192.168.33.1"
 ```
 after the line `config.vm.box = "puphpet/centos65-x64"`
-5. Spin up your **node1** instance: `vagrant up`
+* Spin up your **node1** instance: `vagrant up`
    * You might have to run provision if you get the message
 ```
 Machine already provisioned. Run `vagrant provision` or use the `--provision`
 ```
-6. Login into your virtual os:
+* Login into your virtual os:
    * If your host os is OSX or Linux you can simply type: `vagrant ssh`
    * If your host os is Windows you'll need to run `putty.exe`
-7. Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
-8. Generate your ssh key (you can default `enter` on all options):
+* Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
+* Generate your ssh key (you can default `enter` on all options):
 ```
 ssh-keygen -t rsa
 cd ~/
@@ -59,27 +58,27 @@ cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
 chmod 600 authorized_keys
 ```
-9. Exit the virtual environment: `exit`
+* Exit the virtual environment: `exit`
 
 ## Preparing node2
 
-10. Create directory and initialize another vagrant node:
+* Create directory and initialize another vagrant node:
 ```
 cd ..
 mkdir node2
 vagrant init puphpet/centos65-x64
 ```
-11. Update your `Vagrantfile` by adding the following lines
+* Update your `Vagrantfile` by adding the following lines
 ```
   config.vm.hostname = "node2"
   config.vm.network "private_network", ip: "192.168.33.2"
 ```
 after the line `config.vm.box = "puphpet/centos65-x64"`
-12. Copy your keys file to the working directory: `cp ../node1/ssh-keys.tar.gz .`
-13. Spin up your **node2**: `vagrant up`
-14. Login into your virtual os
-15. Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
-16. Unpack your keys and install mpich software:
+* Copy your keys file to the working directory: `cp ../node1/ssh-keys.tar.gz .`
+* Spin up your **node2**: `vagrant up`
+* Login into your virtual os
+* Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
+* Unpack your keys and install mpich software:
 ```
 tar xvfz /vagrant/ssh-keys.tar.gz
 sudo yum install mpich mpich-devel
@@ -87,7 +86,7 @@ cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
 chmod 600 authorized_keys
 ```
-17. Exit the virtual environment: `exit`
+* Exit the virtual environment: `exit`
 
 Note that you can repeat the above steps for `node3` and `node4`
 
