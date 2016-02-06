@@ -68,6 +68,7 @@ chmod 600 authorized_keys
 cd ..
 mkdir node2
 vagrant init puphpet/centos65-x64
+```
 11. Update your `Vagrantfile` by adding the following lines
 ```
   config.vm.hostname = "node2"
@@ -89,5 +90,4 @@ chmod 600 authorized_keys
 17. Exit the virtual environment: `exit`
 
 Note that you can repeat the above steps for `node3` and `node4`
-
 
