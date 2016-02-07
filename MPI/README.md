@@ -46,7 +46,8 @@ after the line `config.vm.box = "puphpet/centos65-x64"`
 Machine already provisioned. Run `vagrant provision` or use the `--provision`
 ```
 ```
-Box 'puphet/centos65-x64' could not be found. Run `vagrant box add puphpet/centos65-x64 http://box.puphpet.com/centos-6.8-x86_64-20151130-virtualbox.box` .
+Box 'puphet/centos65-x64' could not be found. 
+Run `vagrant box add puphpet/centos65-x64 http://box.puphpet.com/centos-6.8-x86_64-20151130-virtualbox.box` .
 ```
 * Login into your virtual os:
    * If your host os is OSX or Linux you can simply type: `vagrant ssh`
