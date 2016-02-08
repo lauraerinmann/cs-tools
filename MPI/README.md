@@ -45,6 +45,8 @@ after the line `config.vm.box = "puphpet/centos65-x64"`
 ```
 Machine already provisioned. Run `vagrant provision` or use the `--provision`
 ```
+
+```
 * Login into your virtual os:
    * If your host os is OSX or Linux you can simply type: `vagrant ssh`
    * If your host os is Windows you'll need to run `putty.exe`
