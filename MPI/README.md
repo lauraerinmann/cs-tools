@@ -81,12 +81,12 @@ vagrant init puphpet/centos65-x64
 after the line `config.vm.box = "puphpet/centos65-x64"`
 * Spin up your **node2**: `vagrant up`
 * Login into your virtual os
-* Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
 * Generate your ssh key (you can default `enter` on all options):
 ```
 ssh-keygen -t rsa
 cp ~/.ssh/id_rsa.pub /share/node2.pub
 ```
+* Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
 * Exit the virtual environment: `exit`
 
 Note that you can repeat the above steps for `node3` and `node4`
