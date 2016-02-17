@@ -25,6 +25,12 @@ node4 192.168.33.4
 
 * Create a project directory: `mini-cluster`
 
+### Preparing share
+
+```
+mkdir share
+```
+
 ### Preparing node1
 
 * Create a node directory: `mkdir node1`
@@ -34,14 +40,16 @@ cd node1
 vagrant init puphpet/centos65-x64
 ```
 This process will take awhile the first time around.
-4. Update the `Vagrantfile` by adding the following lines
+
+* Update the `Vagrantfile` by adding the following lines
 ```
   config.vm.hostname = "node1"
   config.vm.network "private_network", ip: "192.168.33.1"
+  config.vm.synced_folder "../share", "/share"
 ```
 after the line `config.vm.box = "puphpet/centos65-x64"`
 * Spin up your **node1** instance: `vagrant up`
-   * You might have to run provision if you get the message
+ * You might have to run provision if you get the message
 ```
 Machine already provisioned. Run `vagrant provision` or use the `--provision`
 ```
@@ -52,11 +60,7 @@ Machine already provisioned. Run `vagrant provision` or use the `--provision`
 * Generate your ssh key (you can default `enter` on all options):
 ```
 ssh-keygen -t rsa
-cd ~/
-tar cvfz /vagrant/ssh-keys.tar.gz .ssh
-cd ~/.ssh
-cat id_rsa.pub >> authorized_keys
-chmod 600 authorized_keys
+cp ~/.ssh/id_rsa.pub /share/node01.pub
 ```
 * Exit the virtual environment: `exit`
 
@@ -74,21 +78,29 @@ vagrant init puphpet/centos65-x64
   config.vm.network "private_network", ip: "192.168.33.2"
 ```
 after the line `config.vm.box = "puphpet/centos65-x64"`
-* Copy your keys file to the working directory: `cp ../node1/ssh-keys.tar.gz .`
 * Spin up your **node2**: `vagrant up`
 * Login into your virtual os
 * Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
-* Unpack your keys and install mpich software:
+* Generate your ssh key (you can default `enter` on all options):
 ```
-tar xvfz /vagrant/ssh-keys.tar.gz
-sudo yum install mpich mpich-devel
-cd ~/.ssh
-cat id_rsa.pub >> authorized_keys
-chmod 600 authorized_keys
+ssh-keygen -t rsa
+cp ~/.ssh/id_rsa.pub /share/node01.pub
 ```
 * Exit the virtual environment: `exit`
 
 Note that you can repeat the above steps for `node3` and `node4`
+
+### Add public keys to each nodes
+
+```
+cd ..
+cd node1
+vagrant ssh
+cat /share/node*.pub >> ~/.ssh/authorized_keys
+exit
+```
+
+Repeat for node2, ndoe3, and node4.
 
 ### Writing your first MPI program
 
