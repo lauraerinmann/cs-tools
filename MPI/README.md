@@ -103,6 +103,18 @@ exit
 
 Repeat for node2, ndoe3, and node4.
 
+## Destroying a node
+
+Make sure that you've exited the guest node first.
+
+```
+vagrant halt
+vagrant destroy
+cd ..
+```
+Now delete the node folder.
+
+
 ### Writing your first MPI program
 
 For the following example program , do all your execution on `node1` and out of the `/vagrant` directory.  
