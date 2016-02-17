@@ -85,7 +85,7 @@ after the line `config.vm.box = "puphpet/centos65-x64"`
 * Generate your ssh key (you can default `enter` on all options):
 ```
 ssh-keygen -t rsa
-cp ~/.ssh/id_rsa.pub /share/node01.pub
+cp ~/.ssh/id_rsa.pub /share/node2.pub
 ```
 * Exit the virtual environment: `exit`
 
