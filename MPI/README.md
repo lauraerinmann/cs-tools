@@ -117,7 +117,13 @@ Now delete the node folder.
 
 ### Writing your first MPI program
 
-For the following example program , do all your execution on `node1` and out of the `/vagrant` directory.  
+For the following example program , do all your execution on `node1` and out of the `/share` directory.  
+
+```
+cd node1
+vagrant ssh
+cd /share
+```
 
 Create a program `hello.c` with the following code:
 
@@ -189,7 +195,7 @@ To compile the program run the following command:
 /usr/lib64/mpich/bin/mpicc -o hello hello.c
 ```
 
-Create `hostfile` with the following content:
+Create `hostfile` with the following:
 
 ```
 192.168.33.1
@@ -198,7 +204,7 @@ Create `hostfile` with the following content:
 To run your program execute the following command:
 
 ```
-/usr/lib64/mpich/bin/mpirun -n 4 -f hostfile /vagrant/hello
+/usr/lib64/mpich/bin/mpirun -n 4 -f hostfile /share/hello
 ```
 
 
