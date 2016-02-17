@@ -76,6 +76,7 @@ vagrant init puphpet/centos65-x64
 ```
   config.vm.hostname = "node2"
   config.vm.network "private_network", ip: "192.168.33.2"
+  config.vm.synced_folder "../share", "/share"
 ```
 after the line `config.vm.box = "puphpet/centos65-x64"`
 * Spin up your **node2**: `vagrant up`
