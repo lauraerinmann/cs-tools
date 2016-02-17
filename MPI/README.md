@@ -56,12 +56,12 @@ Machine already provisioned. Run `vagrant provision` or use the `--provision`
 * Login into your virtual os:
    * If your host os is OSX or Linux you can simply type: `vagrant ssh`
    * If your host os is Windows you'll need to run `putty.exe`
-* Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
 * Generate your ssh key (you can default `enter` on all options):
 ```
 ssh-keygen -t rsa
-cp ~/.ssh/id_rsa.pub /share/node01.pub
+cp ~/.ssh/id_rsa.pub /share/node1.pub
 ```
+* Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
 * Exit the virtual environment: `exit`
 
 ## Preparing node2
