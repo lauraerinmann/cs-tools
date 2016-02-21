@@ -34,7 +34,7 @@ mkdir share
 ### Preparing node1
 
 * Create a node directory: `mkdir node1`
-* Initialize a vagrant node: 
+* Initialize a vagrant node:
 ```
 cd node1
 vagrant init puphpet/centos65-x64
@@ -64,7 +64,7 @@ cp ~/.ssh/id_rsa.pub /share/node1.pub
 * Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
 * Exit the virtual environment: `exit`
 
-## Preparing node2
+### Preparing node2, node3, and node4
 
 * Create directory and initialize another vagrant node:
 ```
@@ -89,7 +89,7 @@ cp ~/.ssh/id_rsa.pub /share/node2.pub
 * Install mpich 3.4.1: `sudo yum -y install mpich mpich-devel`
 * Exit the virtual environment: `exit`
 
-Note that you can repeat the above steps for `node3` and `node4`
+Now repeat the above steps for `node3` and `node4`.
 
 ### Add public keys to each nodes
 
@@ -101,21 +101,22 @@ cat /share/node*.pub >> ~/.ssh/authorized_keys
 exit
 ```
 
-Repeat for node2, ndoe3, and node4.
+Repeat for `node2`, `node3`, and `node4`.
 
-## Destroying a node
+### Destroying a node
 
-Make sure that you've exited the guest node first.
+When we're done with the work.  Let's gracefully clean up our system.  Make sure that you've exited the guest node first.
 
 ```
+cd node1
 vagrant halt
 vagrant destroy
 cd ..
 ```
-Now delete the node folder.
 
+Now delete the `node1` folder.  The above step is **destructive** and there is no way to undo.
 
-### Writing your first MPI program
+## Your First MPI program
 
 For the following example program , do all your execution on `node1` and out of the `/share` directory.  
 
@@ -125,69 +126,7 @@ vagrant ssh
 cd /share
 ```
 
-Create a program `hello.c` with the following code:
-
-```
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <mpi.h>
-
-int printTime()
-{
-  time_t current_time;
-  char* c_time_string;
-
-  current_time = time(NULL);
-
-  if (current_time == ((time_t)-1)) {
-    fprintf(stderr, "Failure to obtain the current time.\n");
-    return EXIT_FAILURE;
-  }
-
-  c_time_string = ctime(&current_time);
-
-  if (c_time_string == NULL) {
-    fprintf(stderr, "Failure to convert the current time.\n");
-    return EXIT_FAILURE;
-  }
-
-  printf("Current time is %s", c_time_string);
-
-  return EXIT_SUCCESS;
-}
-
-int main(int argc, char** argv) 
-{
-  // Initialize the MPI environment
-  MPI_Init(NULL, NULL);
-
-  // Get the number of processes
-  int world_size;
-  MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-  // Get the rank of the process
-  int world_rank;
-  MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-  // Get the name of the processor
-  char processor_name[MPI_MAX_PROCESSOR_NAME];
-  int name_len;
-  MPI_Get_processor_name(processor_name, &name_len);
-
-  printTime();
-
-  // Print off a hello world message
-  printf("Hello world from processor %s, rank %d"
-         " out of %d processors\n",
-         processor_name, world_rank, world_size);
-
-  // Finalize the MPI environment.
-  MPI_Finalize();
-
-  return 0;
-}
-```
+Create a program [hello.c](hello.c) in your `/share` directory.
 
 To compile the program run the following command:
 
@@ -207,4 +146,4 @@ To run your program execute the following command:
 /usr/lib64/mpich/bin/mpirun -n 4 -f hostfile /share/hello
 ```
 
-
+The `hello.c` program demonstrates a simple MPI program that does not perform any communications.  Now, let's do a slightly more complicated program.  For this task, your program will pass a `token` around a ring.  The solution is in the [potato.c](potato.c) code.
