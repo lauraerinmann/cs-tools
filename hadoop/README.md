@@ -16,10 +16,17 @@ We will deploy a portable cluster with the following configuration:
 ## Start compute nodes
 
 ```
+vagrant up node1 --provision
 vagrant ssh node1
-cd /vagrant/wordcount
 hadoop namenode -format
 start-all.sh
+```
+
+For windows users please putty into the host and port shown with the `vagrant up node1 --provision` output.
+
+## Run java `wordcount` program
+
+```
 hadoop dfs -copyFromLocal gutenberg/ /user/vagrant/gutenberg
 hadoop dfs -ls /user/vagrant/gutenberg
 
@@ -27,18 +34,19 @@ hadoop jar /opt/hadoop-1.2.1/hadoop-examples-*.jar \
    wordcount /user/vagrant/gutenberg \
    /user/vagrant/gutenberg-out
 
+hadoop dfs -ls /user/vagrant/gutenberg-out
 hadoop dfs -copyToLocal /user/vagrant/gutenberg-out out
 ```
 
-## Writing your own c++ hadoop programming
+The output files should be copied to `out` folder.
 
-This part will require that you have the cluster setup correctly.
+## Writing your own c++ hadoop programming
 
 ```
 cd /vagrant/wordcount
 make
 sh run.sh
-hadoop dfs -ls 
+hadoop dfs -ls dft1-out
 hadoop dfs -copyToLocal dft1-out dft1-out
 ```
 
