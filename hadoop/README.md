@@ -53,7 +53,7 @@ hadoop dfs -copyToLocal /user/vagrant/gutenberg-out out
 
 The output files should be copied to `out` folder.
 
-## Writing your own c++ hadoop programming
+## Run c++ `wordcount` program
 
 ```
 cd /vagrant/wordcount
