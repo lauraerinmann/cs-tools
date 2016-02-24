@@ -1,21 +1,28 @@
 #!/bin/sh
 
+export LIB=-lcrypto
+
 ## install dependencies
 for f in openssl-devel mpich mpich-devel java-1.7.0-openjdk-devel; do
-  sudo yum -q -y install ${f}
+  sudo yum -y install ${f}
 done
 
 ## update etc
 sudo install -m 644 -o root /vagrant/etc/hosts /etc/hosts
 
 ## install hadoop
-curl --silent --output /tmp/hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-1.0.3/hadoop-1.0.3-bin.tar.gz
+HADOOP=hadoop-1.2.1
+curl --silent --output /tmp/hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/$HADOOP/${HADOOP}.tar.gz
 sudo tar -zxf /tmp/hadoop.tar.gz -C /opt
-cp /vagrant/hadoop/* /opt/hadoop-1.0.3/conf/
+
+( cd /opt/hadoop-1.2.1/src/c++/utils ; sh configure ; make install )
+( cd /opt/hadoop-1.2.1/src/c++/pipes ; sh configure ; make install )
+
+cp /vagrant/hadoop/* /opt/${HADOOP}/conf/
 sudo mkdir -p /app/hadoop/tmp
-sudo chown vagrant /app/hadoop/tmp
+sudo chown -R vagrant /app/hadoop/tmp
+sudo chown -R vagrant /opt/${HADOOP}
 sudo chmod 750 /app/hadoop/tmp
-sudo chown -R vagrant /opt/hadoop-1.0.3
 
 ## setup keys
 install -m 600 -o vagrant /vagrant/ssh/id_rsa ~vagrant/.ssh/id_rsa
