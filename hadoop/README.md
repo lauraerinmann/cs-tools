@@ -24,7 +24,7 @@ cd cs-tools/hadoop
 vagrant up node1 --provision
 ```
 
-* Login into `node1`
+### Login into `node1`
 
 * If you are a Windows user, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into `node1` using the host and port shown with the `vagrant up node1 --provision` output.
 
