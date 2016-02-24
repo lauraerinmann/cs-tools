@@ -15,14 +15,27 @@ We will deploy a portable cluster with the following configuration:
 
 ## Start a compute node
 
+* First download and unzip the [cs-tools](https://github.com/csula/cs-tools/archive/master.zip).
+
+* Start up your first node:
+
 ```
+cd cs-tools/hadoop
 vagrant up node1 --provision
-vagrant ssh node1
+```
+
+* Login into `node1`
+
+* If you are a Windows user, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into `node1` using the host and port shown with the `vagrant up node1 --provision` output.
+
+* If you are a Mac or Linux user, you can simply type `vagrant ssh node1`
+
+## Prepare the hadoop system
+
+```
 hadoop namenode -format
 start-all.sh
 ```
-
-For windows users please putty into the host and port shown with the `vagrant up node1 --provision` output.
 
 ## Run java `wordcount` program
 
@@ -51,3 +64,9 @@ hadoop dfs -copyToLocal dft1-out dft1-out
 ```
 
 You can now examine the content of `dft1-out` and the result should match `out`.
+
+# References
+
+* [Running Hadoop on Ubuntu Linux (Single-Node Cluster)] (http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/)
+
+* [Hadoop Tutorial 2.2 -- Running C++ Programs on Hadoop](http://www.science.smith.edu/dftwiki/index.php/Hadoop_Tutorial_2.2_--_Running_C++_Programs_on_Hadoop)
