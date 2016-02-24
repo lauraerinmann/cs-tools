@@ -21,7 +21,7 @@ cd /vagrant/wordcount
 hadoop namenode -format
 start-all.sh
 hadoop dfs -copyFromLocal gutenberg/ /user/vagrant/gutenberg
-dfs -ls /user/vagrant/gutenberg
+hadoop dfs -ls /user/vagrant/gutenberg
 hadoop jar /opt/hadoop-1.0.3/hadoop-examples-1.0.3.jar wordcount /user/vagrant/gutenberg /user/vagrant/gutenberg-out
 hadoop dfs -copyToLocal /user/vagrant/gutenberg-out out
 ```
