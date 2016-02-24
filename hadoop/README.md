@@ -22,7 +22,11 @@ hadoop namenode -format
 start-all.sh
 hadoop dfs -copyFromLocal gutenberg/ /user/vagrant/gutenberg
 hadoop dfs -ls /user/vagrant/gutenberg
-hadoop jar /opt/hadoop-1.2.1/hadoop-examples-*.jar wordcount /user/vagrant/gutenberg /user/vagrant/gutenberg-out
+
+hadoop jar /opt/hadoop-1.2.1/hadoop-examples-*.jar \
+   wordcount /user/vagrant/gutenberg \
+   /user/vagrant/gutenberg-out
+
 hadoop dfs -copyToLocal /user/vagrant/gutenberg-out out
 ```
 
