@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## install dependencies
-for f in openssl-devel mpich mpich-devel java-1.7.0-openjdk-devel
+for f in openssl-devel mpich mpich-devel java-1.7.0-openjdk-devel; do
   sudo yum -q -y install ${f}
 done
 
