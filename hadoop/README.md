@@ -13,7 +13,7 @@ We will deploy a portable cluster with the following configuration:
 * Download the latest version of [vagrant] software for your operating system.
 * Download the latest version of [VirtualBox](http://virtualbox.org) software for your operating system.
 
-## Start compute nodes
+## Start a compute node
 
 ```
 vagrant up node1 --provision
