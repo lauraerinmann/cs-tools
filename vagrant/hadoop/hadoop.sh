@@ -7,7 +7,8 @@ MODE=$1
 echo "[i] Setting up hadoop dependencies"
 
 if [ -z "$MODE" ]; then
-	echo "usage: $0 <one-node|cluster>"
+  echo "usage: $0 <one-node|cluster>"
+  exit
 fi
 
 ## install dependencies
@@ -27,7 +28,7 @@ mkdir -p /app/hadoop/tmp
 chown -R vagrant /app/hadoop/tmp
 chmod 750 /app/hadoop/tmp
 
-cp /vagrant/hadoop/${MODE}/* /opt/${HADOOP}/conf/
+cp /vagrant/${MODE}/* /opt/${HADOOP}/conf/
 
 ## set profiles
 install -m 644 -o root ${SETUP}/profile.d/hadoop.sh /etc/profile.d/hadoop.sh
