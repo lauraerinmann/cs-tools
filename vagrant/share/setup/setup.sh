@@ -11,5 +11,3 @@ cat ${SETUP}/ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys
 
 ## update etc
 install -m 644 -o root ${SETUP}/etc/hosts /etc/hosts
-install -m 644 -o root ${SETUP}/profile.d/hadoop.sh /etc/profile.d/hadoop.sh
-install -m 644 -o root ${SETUP}/profile.d/java.sh /etc/profile.d/java.sh

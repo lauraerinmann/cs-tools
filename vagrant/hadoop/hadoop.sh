@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SETUP=/vagrant/share/setup
+SETUP=/share/setup
 HADOOP=hadoop-1.2.1
 MODE=$1
 
@@ -28,3 +28,7 @@ chown -R vagrant /app/hadoop/tmp
 chmod 750 /app/hadoop/tmp
 
 cp /vagrant/hadoop/${MODE}/* /opt/${HADOOP}/conf/
+
+## set profiles
+install -m 644 -o root ${SETUP}/profile.d/hadoop.sh /etc/profile.d/hadoop.sh
+install -m 644 -o root ${SETUP}/profile.d/java.sh /etc/profile.d/java.sh
