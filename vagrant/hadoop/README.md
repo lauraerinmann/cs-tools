@@ -39,6 +39,19 @@ node3 192.168.33.103
 node4 192.168.33.104
 ```
 
+Start up your first single node:
+
+```
+cd cs-tools/hadoop
+vagrant up node1 --provision
+vagrant up node2 --provision
+vagrant up node3 --provision
+vagrant up node4 --provision
+vagrant status
+```
+
+Now you can `ssh` to any of the four nodes.
+
 ## Running Hadoop
 
 The instruction below is applicable to either single node or multiple nodes mode.
