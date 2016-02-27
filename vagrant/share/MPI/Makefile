@@ -2,9 +2,10 @@ CC = /usr/lib64/mpich/bin/mpicc
 
 CFLAGS = -I. -g -Wall
 LDFLAGS = -L. -lm
+PROGRAMS = hello potatoes potatoes
 
 default: all
-all: hello potato
+all: $(PROGRAMS)
 
 .PHONY: clean
 
@@ -17,8 +18,11 @@ hello: hello.o
 potato: potato.o
 	$(CC) -o $@ $^ $(LDFLAGS)
 
+potatoes: potatoes.o
+		$(CC) -o $@ $^ $(LDFLAGS)
+
 clean:
-	/bin/rm -f *.o hello potato
+	/bin/rm -f *.o $(PROGRAMS)
 
 squeaky: clean
 	/bin/rm -f *~ *.bak
