@@ -8,7 +8,7 @@ Prints out a simple hello message for each of the processors in the MPI applicat
 
 Simple program that passes a potato in a circular ring starting with rank `0`.
 
-### `potattoes.c`
+### `potatoes.c`
 
 A slightly more complex program that passes a number of potatoes in a circular ring.  The number of potatoes or `size` is specified by the command line argument.  To run `potatoes`
 
