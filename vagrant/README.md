@@ -23,9 +23,7 @@ There are a few commands that you'd need to know to harness the power Vagrant:
 
 ### Access the cluster
 
-* Windows users, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  
-
-The `host` and `port` information is shown when you boot up the guest OS:
+* Windows users, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  The `host` and `port` information is shown when you boot up the guest OS:
 
 ```
 ==> node1: Waiting for machine to boot. This may take a few minutes...

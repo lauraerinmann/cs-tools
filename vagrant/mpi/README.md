@@ -34,9 +34,7 @@ If all goes well all four nodes should boot up cleanly.
 
 ### Access the cluster
 
-* If you are a Windows user, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  
-
-The `host` and `port` information is shown when you boot up the guest OS:
+* If you are a Windows user, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  The `host` and `port` information is shown when you boot up the guest OS:
 
 ```
 ==> node1: Waiting for machine to boot. This may take a few minutes...
