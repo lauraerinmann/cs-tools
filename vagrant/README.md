@@ -23,7 +23,7 @@ There are a few commands that you'd need to know to harness the power Vagrant:
 
 ### Access the cluster
 
-* Windows users, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  The `host` and `port` information is shown when you boot up the guest OS:
+* Windows users, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  The `host` and `port` information is shown when you boot up the guest OS.
 
 ```
 ==> node1: Waiting for machine to boot. This may take a few minutes...
@@ -31,6 +31,8 @@ There are a few commands that you'd need to know to harness the power Vagrant:
     node1: SSH username: vagrant
     node1: SSH auth method: private key
 ```
+
+In the above output, the `host` is `127.0.0.1` and the port is `2222`.
 
 * Mac or Linux users, please type `vagrant ssh node1`, for example, to access `node1`.
 
