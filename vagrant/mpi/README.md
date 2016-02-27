@@ -32,6 +32,10 @@ vagrant up node4
 If all goes well all four nodes should boot up cleanly.  
 ![vagrant boot screen](vagrant-mpi-console.png)
 
+### Access the cluster
+
+* If you are a Windows user, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  
+
 The `host` and `port` information is shown when you boot up the guest OS:
 
 ```
@@ -39,11 +43,6 @@ The `host` and `port` information is shown when you boot up the guest OS:
     node1: SSH address: 127.0.0.1:2222
     node1: SSH username: vagrant
     node1: SSH auth method: private key
-```
-
-### Access the cluster
-
-* If you are a Windows user, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  
 
 * If you are a Mac or Linux user, you can simply type `vagrant ssh node1`
 

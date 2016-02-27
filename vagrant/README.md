@@ -25,8 +25,6 @@ There are a few commands that you'd need to know to harness the power Vagrant:
 
 * Windows users, please use [putty.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log into the guest OS.  
 
-* Mac or Linux users, please type `vagrant ssh node1`, for example, to access `node1`.
-
 The `host` and `port` information is shown when you boot up the guest OS:
 
 ```
@@ -35,5 +33,7 @@ The `host` and `port` information is shown when you boot up the guest OS:
     node1: SSH username: vagrant
     node1: SSH auth method: private key
 ```
+
+* Mac or Linux users, please type `vagrant ssh node1`, for example, to access `node1`.
 
 Note that while it's tempting to use `VirtualBox` GUI to get into the nodes, we do not recommend this approach.  Instead rely solely on your `putty.exe` or `ssh` application.
